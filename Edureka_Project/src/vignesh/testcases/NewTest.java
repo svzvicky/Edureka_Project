@@ -1,19 +1,27 @@
 package vignesh.testcases;
 
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import vignesh.pageobjects.Login;
+import vignesh.excel.Exceldata;
 
 public class NewTest {
 	WebDriver driver;
-	                                                                                                
-	@Test
-	public void f() {
+	Exceldata data = new Exceldata();
+	@BeforeTest
+	public void browser() throws EncryptedDocumentException, InvalidFormatException, IOException {
+		
+		
 		System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\Webdrivers\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://s1.demo.opensourcecms.com/wordpress/wp-admin/");
-		Login.Loginid(driver).sendKeys("username");
-  }
-}
+		Exceldata.excel();
+		String URL = Exceldata.getCellData(1, 1);
+		driver.get(URL);
+		System.out.println(URL);
+	}
+	}
