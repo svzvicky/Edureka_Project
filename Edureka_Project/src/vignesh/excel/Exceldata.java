@@ -14,20 +14,16 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.util.SystemOutLogger;
 
 public class Exceldata {
-	String data [][] = new String [5][5];
 	static Sheet mySheet;
 	
-	public static void excel() throws EncryptedDocumentException, InvalidFormatException, IOException {
-	System.out.println(" reached excel");	
-	FileInputStream src= new FileInputStream("D:\\Selenium 201 repo\\Project.xlsx");
-	Workbook myBook = WorkbookFactory.create(src);
-	mySheet = myBook.getSheet("data");
-	int rowCount = mySheet.getPhysicalNumberOfRows(); 
-	System.out.println("The physical number of rows: "+rowCount);
-	
-	}
-
-	public static String getCellData (int j ,int i) {
+	public static String getCellData (int j ,int i) throws EncryptedDocumentException, InvalidFormatException, IOException {
+		
+		System.out.println(" Get Cell data Block");	
+		FileInputStream src= new FileInputStream("D:\\Selenium 201 repo\\Project.xlsx");
+		Workbook myBook = WorkbookFactory.create(src);
+		mySheet = myBook.getSheet("data");
+		//int rowCount = mySheet.getPhysicalNumberOfRows(); 
+		//System.out.println("The physical number of rows: "+rowCount);
 		Row myRow = mySheet.getRow(i);
 			if (myRow == null) {
 				return "No data found";
