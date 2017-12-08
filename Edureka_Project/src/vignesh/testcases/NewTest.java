@@ -6,9 +6,13 @@ import java.util.concurrent.TimeUnit;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -30,16 +34,17 @@ public class NewTest {
 		
 	}
 	
-	@Test(enabled = false)
+	@Test(enabled = true, priority =1)
 	public void Username() throws EncryptedDocumentException, InvalidFormatException, IOException {
 			//Validating Username Field and send the data
 			WebElement Usernamekeyword = LoginPage.Loginid(driver);
 			String Usernamedata = Exceldata.getCellData(1, 2);
 			Assert.assertEquals(true, Usernamekeyword.isDisplayed());
 			Usernamekeyword.sendKeys(Usernamedata);
+			Utilities.captureScreenShot(driver);
 	}
 	
-	@Test(enabled = false)
+	@Test(enabled = true, priority =2)
 	public void password() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		//Validating the Password
 		Thread.sleep(2000);
@@ -47,17 +52,19 @@ public class NewTest {
 		String Passworddata = Exceldata.getCellData(1, 3);
 		Assert.assertEquals(true, Passkeyword.isDisplayed());
 		Passkeyword.sendKeys(Passworddata);
+		Utilities.captureScreenShot(driver);
 	}
 	
-	@Test(enabled = false)
+	@Test(enabled = true, priority =3)
 	public void loginbutton() throws InterruptedException {
 		//Validating the Login
 		Thread.sleep(2000);
 		WebElement Loginbutton = LoginPage.LoginButton(driver);
 		Assert.assertEquals(true, Loginbutton.isDisplayed());
 		Loginbutton.click();
+		System.out.println("Login Button Clicked");
+		Utilities.captureScreenShot(driver);
 	}
-	
 	@Test (enabled = false)
 	public void verifydataentered() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		WebElement Usernamekeyword = LoginPage.Loginid(driver);
@@ -72,7 +79,7 @@ public class NewTest {
 		 Thread.sleep(2000);
 		 Utilities.captureScreenShot(driver);
 	} 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void Lostpassword_emailaddress() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		//String URL = Exceldata.getCellData(1, 1);
 		//driver.get(URL);
@@ -87,8 +94,8 @@ public class NewTest {
 			System.out.println("LostpasswordPage - Email address textbox is present");
 		}
 	}
-	@Test(enabled = true)
-	public void Lostpassword_pswdbutton() {
+	@Test(enabled = false)
+	public void Lostpassword_pswdbutton() throws InterruptedException {
 		Boolean pswdbutton = LostpasswordPage.getnewpasswordbutton(driver).isEnabled();
 		if (pswdbutton == true) {
 			System.out.println("Lostpassword_pswdbutton -" + pswdbutton + "Is present");
@@ -96,12 +103,27 @@ public class NewTest {
 		{
 		System.out.println("Lostpassword_pswdbutton is not found");
 		}
+
+	}
+	
+	@Test(enabled = false, priority =4)
+	public void Posts_Sidebar() throws InterruptedException {
+		Thread.sleep(2000);
+		boolean side_posts = Admin_Console.Posts_link(driver).isDisplayed();
+		if (side_posts) {
+			Admin_Console.Posts_link(driver).click();
+			System.out.println("Posts menu clicked");
+		}else
+		{
+			System.out.println("Posts link not found");
+		}
+		Utilities.captureScreenShot(driver);
 	}
 	
 	@AfterTest
 	public void closebrowser() throws InterruptedException {
 		System.out.println("closebrowser");
-		Thread.sleep(2000);
-		driver.close();	
+		Thread.sleep(5000);
+		driver.quit();	
 	}
 	}
