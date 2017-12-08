@@ -18,7 +18,7 @@ public class Exceldata {
 	
 	public static String getCellData (int j ,int i) throws EncryptedDocumentException, InvalidFormatException, IOException {
 		
-		System.out.println(" Get Cell data Block");	
+		System.out.println(" Get Cell data Block" + (i + j));	
 		FileInputStream src= new FileInputStream("D:\\Selenium 201 repo\\Project.xlsx");
 		Workbook myBook = WorkbookFactory.create(src);
 		mySheet = myBook.getSheet("data");
