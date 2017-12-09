@@ -33,11 +33,19 @@ public class Admin_Console {
 		return element;
 }
 	public static WebElement Posts_tags(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id='new-tag-post_tag']"));;
+		element = driver.findElement(By.xpath("//*[@id='new-tag-post_tag']"));
 		return element;
 }
 	public static WebElement Posts_tags_add(WebDriver driver) {
-		element = driver.findElement(By.xpath("//*[@id='post_tag']/div/div[2]/p/input[2]"));;
+		element = driver.findElement(By.xpath("//*[@id='post_tag']/div/div[2]/p/input[2]"));
+		return element;
+}
+	public static WebElement Posts_Widget_link(WebDriver driver) {
+		element = driver.findElement(By.id("post-format-link"));
+		return element;
+}
+	public static WebElement Screenoption(WebDriver driver) {
+		element = driver.findElement(By.id("show-settings-link"));
 		return element;
 }
 }

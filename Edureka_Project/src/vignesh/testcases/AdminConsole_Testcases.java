@@ -132,5 +132,33 @@ public class AdminConsole_Testcases extends NewTest {
 		Preview_Newtab();
 		
 	}
+	@Test(enabled = true, priority =11)
+	public void Selectwidget() throws InterruptedException {
+		Thread.sleep(2000);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("scroll(100, 0)");
+		boolean Link_radio = Admin_Console.Posts_Widget_link(driver).isSelected();
+	if (Link_radio == false) {
+		Admin_Console.Posts_Widget_link(driver).click();
+		System.out.println("Radio button selected");
+	}else
+	{
+		System.out.println("Radio  is already selected");
+	}
+	Utilities.captureScreenShot(driver);
+	}
+	@Test(enabled = true, priority =11)
+	public void Screenoptions() throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement Screen_optonButton = Admin_Console.Screenoption(driver);
+	if (Screen_optonButton != null) {
+		Screen_optonButton.click();
+		System.out.println(Screen_optonButton + "- Clicked");
+	}else
+	{
+		System.out.println("Cannot find element" + Screen_optonButton );
+	}
+	Utilities.captureScreenShot(driver);
+	}
 	
 }
