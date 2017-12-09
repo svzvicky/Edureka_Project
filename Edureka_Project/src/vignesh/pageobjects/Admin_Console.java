@@ -32,4 +32,12 @@ public class Admin_Console {
 		element = driver.findElement(By.xpath("//*[@id='post-preview']"));;
 		return element;
 }
+	public static WebElement Posts_tags(WebDriver driver) {
+		element = driver.findElement(By.xpath("//*[@id='new-tag-post_tag']"));;
+		return element;
+}
+	public static WebElement Posts_tags_add(WebDriver driver) {
+		element = driver.findElement(By.xpath("//*[@id='post_tag']/div/div[2]/p/input[2]"));;
+		return element;
+}
 }

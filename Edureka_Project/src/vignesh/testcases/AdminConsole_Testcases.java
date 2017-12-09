@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -88,6 +89,7 @@ public class AdminConsole_Testcases extends NewTest {
 		Thread.sleep(2000);
 		WebElement Preview = Admin_Console.Posts_Preview(driver);
 		if(Preview!= null){
+			Thread.sleep(2000);
 			Preview.click();
 			System.out.println(Preview);
 		}else
@@ -96,7 +98,7 @@ public class AdminConsole_Testcases extends NewTest {
 		}
 		Utilities.captureScreenShot(driver);
 	}
-	@Test(enabled = true, priority =8)
+	@Test(enabled = true, priority =9)
 	public void Preview_Newtab() throws InterruptedException {
 		Thread.sleep(2000);
 		String ConsoleTab = driver.getWindowHandle();
@@ -105,7 +107,30 @@ public class AdminConsole_Testcases extends NewTest {
 		Utilities.captureScreenShot(driver);
 		Thread.sleep(2000);
 	    driver.close();
-	    driver.switchTo().window(ConsoleTab);	
+	    driver.switchTo().window(ConsoleTab);
+	    newTab.remove(newTab);
+	}
+	@Test(enabled = true, priority =10)
+	public void Addingtags() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException {
+		Thread.sleep(2000);
+		WebElement tags = Admin_Console.Posts_tags(driver);
+		if(tags!= null){
+			String tag = Exceldata.getCellData(1, 6);
+			tags.sendKeys(tag);
+			Utilities.captureScreenShot(driver);
+			System.out.println(tags + tag);
+			Admin_Console.Posts_tags_add(driver).click();
+			System.out.println("Add clicked");
+		}else
+		{
+			System.out.println("Element is Absent");
+		}
+		Utilities.captureScreenShot(driver);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("scroll(400, 0)");
+		Posts_preview ();
+		Preview_Newtab();
+		
 	}
 	
 }
