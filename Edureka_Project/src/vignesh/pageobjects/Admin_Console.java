@@ -28,4 +28,8 @@ public class Admin_Console {
 		element = driver.findElement(By.xpath("//*[@id='tinymce']"));;
 		return element;
 }
+	public static WebElement Posts_Preview(WebDriver driver) {
+		element = driver.findElement(By.xpath("//*[@id='post-preview']"));;
+		return element;
+}
 }

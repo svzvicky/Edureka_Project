@@ -1,6 +1,7 @@
 package vignesh.testcases;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -75,11 +76,36 @@ public class AdminConsole_Testcases extends NewTest {
 			Thread.sleep(1000);
 			Admin_Console.Posts_body_Content(driver).sendKeys(Bodydata);
 			System.out.println("Body content Entered" + Bodydata);
+			driver.switchTo().defaultContent();
 		}else
 		{
 			System.out.println("Body content not Entered");
 		}
 		Utilities.captureScreenShot(driver);
+	}
+	@Test(enabled = true, priority =8)
+	public void Posts_preview () throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement Preview = Admin_Console.Posts_Preview(driver);
+		if(Preview!= null){
+			Preview.click();
+			System.out.println(Preview);
+		}else
+		{
+			System.out.println("Element is Absent");
+		}
+		Utilities.captureScreenShot(driver);
+	}
+	@Test(enabled = true, priority =8)
+	public void Preview_Newtab() throws InterruptedException {
+		Thread.sleep(2000);
+		String ConsoleTab = driver.getWindowHandle();
+		ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(newTab.get(1));
+		Utilities.captureScreenShot(driver);
+		Thread.sleep(2000);
+	    driver.close();
+	    driver.switchTo().window(ConsoleTab);	
 	}
 	
 }
