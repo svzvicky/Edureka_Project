@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import vignesh.excel.Exceldata;
@@ -46,9 +48,13 @@ public class AdminConsole_Testcases extends NewTest {
 		if (Title) {
 			Thread.sleep(2000);
 			String Titledata = Exceldata.getCellData(1, 4);
-			//Admin_Console.Posts_Title(driver).click();
-			Admin_Console.Posts_Title(driver).sendKeys(Titledata);;
+			WebElement addnew = Admin_Console.Posts_Title(driver);
 			System.out.println("Title Entered" + Titledata);
+			Actions actions = new Actions(driver);
+			actions.moveToElement(addnew);
+			actions.click();
+			actions.sendKeys(Titledata);
+			actions.build().perform();
 		}else
 		{
 			System.out.println("Title Not Entered");
