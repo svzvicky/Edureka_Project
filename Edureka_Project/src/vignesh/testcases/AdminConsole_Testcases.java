@@ -41,7 +41,7 @@ public class AdminConsole_Testcases extends NewTest {
 		}
 		Utilities.captureScreenShot(driver);
 	}
-	@Test(enabled = true, priority =5)
+	@Test(enabled = true, priority =6)
 	public void Posts_Addnew_Title() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException {
 		Thread.sleep(2000);
 		boolean Title = Admin_Console.Posts_Title(driver).isDisplayed();
@@ -58,6 +58,26 @@ public class AdminConsole_Testcases extends NewTest {
 		}else
 		{
 			System.out.println("Title Not Entered");
+		}
+		Utilities.captureScreenShot(driver);
+	}
+	@Test(enabled = true, priority =7)
+	public void Posts_Addnew_Body() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException {
+		Thread.sleep(2000);
+		boolean Title = Admin_Console.Posts_body_iframe(driver).isDisplayed();
+		if (Title) {
+			Thread.sleep(2000);
+			System.out.println("Iframe found");
+			WebElement body_iframe = Admin_Console.Posts_body_iframe(driver);
+			driver.switchTo().frame(body_iframe);
+			System.out.println("Switched to iframe");
+			String Bodydata = Exceldata.getCellData(1, 5);
+			Thread.sleep(1000);
+			Admin_Console.Posts_body_Content(driver).sendKeys(Bodydata);
+			System.out.println("Body content Entered" + Bodydata);
+		}else
+		{
+			System.out.println("Body content not Entered");
 		}
 		Utilities.captureScreenShot(driver);
 	}

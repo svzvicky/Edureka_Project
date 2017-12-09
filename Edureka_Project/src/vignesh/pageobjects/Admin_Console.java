@@ -20,4 +20,12 @@ public class Admin_Console {
 			element = driver.findElement(By.id("title-prompt-text"));;
 			return element;
 	}
+	public static WebElement Posts_body_iframe(WebDriver driver) {
+		element = driver.findElement(By.id("content_ifr"));;
+		return element;
+}
+	public static WebElement Posts_body_Content(WebDriver driver) {
+		element = driver.findElement(By.xpath("//*[@id='tinymce']"));;
+		return element;
+}
 }
