@@ -2,7 +2,7 @@
 <suite name="Edureka Project" parallel="false">
   <test name="Regression suite 1" >
     <classes>
-      <class name="vignesh.testcases.AdminConsole_Testcases"/>
+      <class name="vignesh.testcases.Screenoption"/>
     </classes>
  </test>
 </suite>
