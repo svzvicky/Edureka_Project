@@ -1,3 +1,9 @@
 /bin/
 /test-output/
+<<<<<<< HEAD
 /Screenshots/
+=======
+/Selenium-201/
+/Screenshots/
+
+>>>>>>> branch 'master' of https://github.com/svzvicky/Edureka_Project.git
