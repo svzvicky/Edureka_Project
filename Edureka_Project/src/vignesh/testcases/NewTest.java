@@ -10,21 +10,19 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import vignesh.excel.Exceldata;
-import vignesh.pageobjects.Admin_Console;
 import vignesh.pageobjects.LoginPage;
-import vignesh.pageobjects.LostpasswordPage;
 import vignesh.utils.Utilities;
 
-public class NewTest {
+public class NewTest{
 	WebDriver driver;
 	Logger log = Logger.getLogger("ScriptLogger");
 	
-	@BeforeTest
+	@BeforeClass
 	public void browser() throws EncryptedDocumentException, InvalidFormatException, IOException {
 		System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\Webdrivers\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
@@ -75,53 +73,12 @@ public class NewTest {
 		 if (Enteredusername.equals(Usernamedata)){
              log.info("Entered username value is" +Enteredusername);
          } else{
-             log.info("Value is different");
+             log.info("Value is not equal to" +Enteredusername);
          }
 		 Thread.sleep(2000);
 		 Utilities.captureScreenShot(driver);
 	} 
-	@Test(enabled = false)
-	public void Lostpassword_emailaddress() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
-		//String URL = Exceldata.getCellData(1, 1);
-		//driver.get(URL);
-		LoginPage.Lostpassword(driver).click();
-		Thread.sleep(2000);
-		Utilities.captureScreenShot(driver);
-		WebElement Usernamekeyword = LostpasswordPage.Username(driver);
-		if (Usernamekeyword.isDisplayed()) {
-			log.info("LostpasswordPage - Email address textbox is present");
-		}else
-		{
-			log.info("LostpasswordPage - Email address textbox is present");
-		}
-	}
-	@Test(enabled = false)
-	public void Lostpassword_pswdbutton() throws InterruptedException {
-		Boolean pswdbutton = LostpasswordPage.getnewpasswordbutton(driver).isEnabled();
-		if (pswdbutton == true) {
-			log.info("Lostpassword_pswdbutton -" + pswdbutton + "Is present");
-		}else
-		{
-		log.info("Lostpassword_pswdbutton is not found");
-		}
-
-	}
-	
-	@Test(enabled = false, priority =4)
-	public void Posts_Sidebar() throws InterruptedException {
-		Thread.sleep(2000);
-		boolean side_posts = Admin_Console.Posts_link(driver).isDisplayed();
-		if (side_posts) {
-			Admin_Console.Posts_link(driver).click();
-			log.info("Posts menu clicked");
-		}else
-		{
-			log.info("Posts link not found");
-		}
-		Utilities.captureScreenShot(driver);
-	}
-	
-	@AfterTest
+	@AfterClass
 	public void closebrowser() throws InterruptedException {
 		log.info("closebrowser");
 		Thread.sleep(5000);
