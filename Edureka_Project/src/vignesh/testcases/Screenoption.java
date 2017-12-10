@@ -17,10 +17,10 @@ public class Screenoption extends AdminConsole_Testcases {
 		boolean Formatcheck = vignesh.pageobjects.Screenoptions.Format(driver).isSelected();
 	if (Formatcheck == true) {
 		vignesh.pageobjects.Screenoptions.Format(driver).click();
-		System.out.println("Element unchecked");
+		log.info("Element unchecked");
 	}else
 	{
-		System.out.println("Element Already unchecked");
+		log.info("Element Already unchecked");
 	}
 	Utilities.captureScreenShot(driver);
 	}
@@ -29,10 +29,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Categoriescheck = vignesh.pageobjects.Screenoptions.Categories(driver).isSelected();
 		if (Categoriescheck == true) {
 			vignesh.pageobjects.Screenoptions.Categories(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -41,10 +41,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Tagscheck = vignesh.pageobjects.Screenoptions.Tags(driver).isSelected();
 		if (Tagscheck == true) {
 			vignesh.pageobjects.Screenoptions.Tags(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -53,10 +53,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean imagecheck = vignesh.pageobjects.Screenoptions.Featuredimage(driver).isSelected();
 		if (imagecheck == true) {
 			vignesh.pageobjects.Screenoptions.Featuredimage(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -65,10 +65,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Excerptcheck = vignesh.pageobjects.Screenoptions.Excerpt(driver).isSelected();
 		if (Excerptcheck == true) {
 			vignesh.pageobjects.Screenoptions.Excerpt(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -77,10 +77,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Trackbackcheck = vignesh.pageobjects.Screenoptions.Trackbacks(driver).isSelected();
 		if (Trackbackcheck == true) {
 			vignesh.pageobjects.Screenoptions.Trackbacks(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -89,10 +89,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Cfieldscheck = vignesh.pageobjects.Screenoptions.CustomFields(driver).isSelected();
 		if (Cfieldscheck == true) {
 			vignesh.pageobjects.Screenoptions.CustomFields(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -101,10 +101,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Discussioncheck = vignesh.pageobjects.Screenoptions.Discussion(driver).isSelected();
 		if (Discussioncheck == true) {
 			vignesh.pageobjects.Screenoptions.CustomFields(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -113,10 +113,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Slugcheck = vignesh.pageobjects.Screenoptions.Slugs(driver).isSelected();
 		if (Slugcheck == true) {
 			vignesh.pageobjects.Screenoptions.Slugs(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -125,10 +125,10 @@ public class Screenoption extends AdminConsole_Testcases {
 			boolean Authorcheck = vignesh.pageobjects.Screenoptions.Author(driver).isSelected();
 		if (Authorcheck == true) {
 			vignesh.pageobjects.Screenoptions.Author(driver).click();
-			System.out.println("Element unchecked");
+			log.info("Element unchecked");
 		}else
 		{
-			System.out.println("Element Already unchecked");
+			log.info("Element Already unchecked");
 		}
 		Utilities.captureScreenShot(driver);
 		}
@@ -144,7 +144,7 @@ public class Screenoption extends AdminConsole_Testcases {
 			actions.moveToElement(logout).build().perform();
 			logout.click();
 		}else {
-			System.out.println("Element not found");
+			log.info("Element not found");
 		}
 		
 	}

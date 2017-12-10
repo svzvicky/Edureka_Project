@@ -3,25 +3,26 @@ package vignesh.testcases;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import vignesh.excel.Exceldata;
-import vignesh.pageobjects.*;
+import vignesh.pageobjects.Admin_Console;
+import vignesh.pageobjects.LoginPage;
+import vignesh.pageobjects.LostpasswordPage;
 import vignesh.utils.Utilities;
 
 public class NewTest {
 	WebDriver driver;
+	Logger log = Logger.getLogger("ScriptLogger");
 	
 	@BeforeTest
 	public void browser() throws EncryptedDocumentException, InvalidFormatException, IOException {
@@ -62,19 +63,19 @@ public class NewTest {
 		WebElement Loginbutton = LoginPage.LoginButton(driver);
 		Assert.assertEquals(true, Loginbutton.isDisplayed());
 		Loginbutton.click();
-		System.out.println("Login Button Clicked");
+		log.info("Login Button Clicked");
 		Utilities.captureScreenShot(driver);
 	}
 	@Test (enabled = false)
 	public void verifydataentered() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		WebElement Usernamekeyword = LoginPage.Loginid(driver);
 		String Enteredusername = Usernamekeyword.getAttribute("Value");
-		System.out.println(Enteredusername);
+		log.info(Enteredusername);
 		String Usernamedata = Exceldata.getCellData(1, 2);
 		 if (Enteredusername.equals(Usernamedata)){
-             System.out.println("Entered username value is" +Enteredusername);
+             log.info("Entered username value is" +Enteredusername);
          } else{
-             System.out.println("Value is different");
+             log.info("Value is different");
          }
 		 Thread.sleep(2000);
 		 Utilities.captureScreenShot(driver);
@@ -88,20 +89,20 @@ public class NewTest {
 		Utilities.captureScreenShot(driver);
 		WebElement Usernamekeyword = LostpasswordPage.Username(driver);
 		if (Usernamekeyword.isDisplayed()) {
-			System.out.println("LostpasswordPage - Email address textbox is present");
+			log.info("LostpasswordPage - Email address textbox is present");
 		}else
 		{
-			System.out.println("LostpasswordPage - Email address textbox is present");
+			log.info("LostpasswordPage - Email address textbox is present");
 		}
 	}
 	@Test(enabled = false)
 	public void Lostpassword_pswdbutton() throws InterruptedException {
 		Boolean pswdbutton = LostpasswordPage.getnewpasswordbutton(driver).isEnabled();
 		if (pswdbutton == true) {
-			System.out.println("Lostpassword_pswdbutton -" + pswdbutton + "Is present");
+			log.info("Lostpassword_pswdbutton -" + pswdbutton + "Is present");
 		}else
 		{
-		System.out.println("Lostpassword_pswdbutton is not found");
+		log.info("Lostpassword_pswdbutton is not found");
 		}
 
 	}
@@ -112,17 +113,17 @@ public class NewTest {
 		boolean side_posts = Admin_Console.Posts_link(driver).isDisplayed();
 		if (side_posts) {
 			Admin_Console.Posts_link(driver).click();
-			System.out.println("Posts menu clicked");
+			log.info("Posts menu clicked");
 		}else
 		{
-			System.out.println("Posts link not found");
+			log.info("Posts link not found");
 		}
 		Utilities.captureScreenShot(driver);
 	}
 	
 	@AfterTest
 	public void closebrowser() throws InterruptedException {
-		System.out.println("closebrowser");
+		log.info("closebrowser");
 		Thread.sleep(5000);
 		driver.quit();	
 	}

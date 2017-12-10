@@ -23,10 +23,10 @@ public class AdminConsole_Testcases extends NewTest {
 		boolean side_posts = Admin_Console.Posts_link(driver).isDisplayed();
 		if (side_posts) {
 			Admin_Console.Posts_link(driver).click();
-			System.out.println("Posts menu clicked");
+			log.info("Posts menu clicked");
 		}else
 		{
-			System.out.println("Posts link not found");
+			log.info("Posts link not found");
 		}
 		Utilities.captureScreenShot(driver);
 	}
@@ -36,10 +36,10 @@ public class AdminConsole_Testcases extends NewTest {
 		boolean addnew = Admin_Console.Posts_Addnew(driver).isDisplayed();
 		if (addnew) {
 			Admin_Console.Posts_Addnew(driver).click();
-			System.out.println(addnew + "is clicked");
+			log.info(addnew + "is clicked");
 		}else
 		{
-			System.out.println("Add new not found");
+			log.info("Add new not found");
 		}
 		Utilities.captureScreenShot(driver);
 	}
@@ -51,7 +51,7 @@ public class AdminConsole_Testcases extends NewTest {
 			Thread.sleep(2000);
 			String Titledata = Exceldata.getCellData(1, 4);
 			WebElement addnew = Admin_Console.Posts_Title(driver);
-			System.out.println("Title Entered" + Titledata);
+			log.info("Title Entered" + Titledata);
 			Actions actions = new Actions(driver);
 			actions.moveToElement(addnew);
 			actions.click();
@@ -59,7 +59,7 @@ public class AdminConsole_Testcases extends NewTest {
 			actions.build().perform();
 		}else
 		{
-			System.out.println("Title Not Entered");
+			log.info("Title Not Entered");
 		}
 		Utilities.captureScreenShot(driver);
 	}
@@ -69,18 +69,18 @@ public class AdminConsole_Testcases extends NewTest {
 		boolean Title = Admin_Console.Posts_body_iframe(driver).isDisplayed();
 		if (Title) {
 			Thread.sleep(2000);
-			System.out.println("Iframe found");
+			log.info("Iframe found");
 			WebElement body_iframe = Admin_Console.Posts_body_iframe(driver);
 			driver.switchTo().frame(body_iframe);
-			System.out.println("Switched to iframe");
+			log.info("Switched to iframe");
 			String Bodydata = Exceldata.getCellData(1, 5);
 			Thread.sleep(1000);
 			Admin_Console.Posts_body_Content(driver).sendKeys(Bodydata);
-			System.out.println("Body content Entered" + Bodydata);
+			log.info("Body content Entered" + Bodydata);
 			driver.switchTo().defaultContent();
 		}else
 		{
-			System.out.println("Body content not Entered");
+			log.info("Body content not Entered");
 		}
 		Utilities.captureScreenShot(driver);
 	}
@@ -91,10 +91,10 @@ public class AdminConsole_Testcases extends NewTest {
 		if(Preview!= null){
 			Thread.sleep(2000);
 			Preview.click();
-			System.out.println(Preview);
+			log.info(Preview);
 		}else
 		{
-			System.out.println("Element is Absent");
+			log.info("Element is Absent");
 		}
 		Utilities.captureScreenShot(driver);
 	}
@@ -118,12 +118,12 @@ public class AdminConsole_Testcases extends NewTest {
 			String tag = Exceldata.getCellData(1, 6);
 			tags.sendKeys(tag);
 			Utilities.captureScreenShot(driver);
-			System.out.println(tags + tag);
+			log.info(tags + tag);
 			Admin_Console.Posts_tags_add(driver).click();
-			System.out.println("Add clicked");
+			log.info("Add clicked");
 		}else
 		{
-			System.out.println("Element is Absent");
+			log.info("Element is Absent");
 		}
 		Utilities.captureScreenShot(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -140,10 +140,10 @@ public class AdminConsole_Testcases extends NewTest {
 		boolean Link_radio = Admin_Console.Posts_Widget_link(driver).isSelected();
 	if (Link_radio == false) {
 		Admin_Console.Posts_Widget_link(driver).click();
-		System.out.println("Radio button selected");
+		log.info("Radio button selected");
 	}else
 	{
-		System.out.println("Radio  is already selected");
+		log.info("Radio  is already selected");
 	}
 	Utilities.captureScreenShot(driver);
 	}
@@ -153,10 +153,10 @@ public class AdminConsole_Testcases extends NewTest {
 		WebElement Screen_optonButton = Admin_Console.Screenoption(driver);
 	if (Screen_optonButton != null) {
 		Screen_optonButton.click();
-		System.out.println(Screen_optonButton + "- Clicked");
+		log.info(Screen_optonButton + "- Clicked");
 	}else
 	{
-		System.out.println("Cannot find element" + Screen_optonButton );
+		log.info("Cannot find element" + Screen_optonButton );
 	}
 	Utilities.captureScreenShot(driver);
 	}

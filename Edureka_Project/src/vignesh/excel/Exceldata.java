@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -15,25 +16,26 @@ import org.apache.poi.util.SystemOutLogger;
 
 public class Exceldata {
 	static Sheet mySheet;
+	static Logger log = Logger.getLogger("ScriptLogger");
 	
 	public static String getCellData (int j ,int i) throws EncryptedDocumentException, InvalidFormatException, IOException {
 		
-		System.out.println(" Get Cell data Block" + (i + j));	
+		log.info(" Get Cell data Block" + (i + j));	
 		FileInputStream src= new FileInputStream("D:\\Selenium 201 repo\\Project.xlsx");
 		Workbook myBook = WorkbookFactory.create(src);
 		mySheet = myBook.getSheet("data");
 		//int rowCount = mySheet.getPhysicalNumberOfRows(); 
-		//System.out.println("The physical number of rows: "+rowCount);
+		//log.info("The physical number of rows: "+rowCount);
 		Row myRow = mySheet.getRow(i);
 			if (myRow == null) {
 				return "No data found";
 			}
 			Cell myCell = myRow.getCell(j);
 			if (myCell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-				System.out.println("Cell Value:"+ String.valueOf((long) myCell.getNumericCellValue()));
+				log.info("Cell Value:"+ String.valueOf((long) myCell.getNumericCellValue()));
 				return String.valueOf((long) myCell.getNumericCellValue());
 			} else {
-				System.out.println("String cell value: "+ myCell.getStringCellValue());
+				log.info("String cell value: "+ myCell.getStringCellValue());
 				return myCell.getStringCellValue();
 			}
 	}
