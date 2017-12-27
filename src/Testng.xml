@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Edureka Project" parallel="false">
+	<test name="Regression suite 1">
+		<classes>
+			
+			<class name="vignesh.testcases.Screenoption" />
+		</classes>
+	</test>
+</suite>
+
+<!-- Author Vignesh -->
+<!-- <class name="vignesh.testcases.Lostpassword" /> -->
