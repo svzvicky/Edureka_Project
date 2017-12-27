@@ -140,7 +140,7 @@ public class AdminConsole_Testcases extends NewTest {
 		boolean Link_radio = Admin_Console.Posts_Widget_link(driver).isSelected();
 	if (Link_radio == false) {
 		Admin_Console.Posts_Widget_link(driver).click();
-		log.info("Radio button selected");
+		log.info("Link Radio button selected");
 	}else
 	{
 		log.info("Radio  is already selected");

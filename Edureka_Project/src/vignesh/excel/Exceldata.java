@@ -21,7 +21,7 @@ public class Exceldata {
 	public static String getCellData (int j ,int i) throws EncryptedDocumentException, InvalidFormatException, IOException {
 		
 		log.info(" Get Cell data Block" + (i + j));	
-		FileInputStream src= new FileInputStream("D:\\Selenium 201 repo\\Project.xlsx");
+		FileInputStream src= new FileInputStream("C:\\Users\\M1034338\\git\\Edureka_Project\\Excel\\FileProject.xlsx");
 		Workbook myBook = WorkbookFactory.create(src);
 		mySheet = myBook.getSheet("data");
 		//int rowCount = mySheet.getPhysicalNumberOfRows(); 
